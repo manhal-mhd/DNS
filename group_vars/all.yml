@@ -1,0 +1,59 @@
+# ansible_python_interpreter: /usr/bin/python2
+
+# ansible_ssh_user: root
+# ansible_ssh_pass: toortoor
+# ansible_become_pass: toortoor
+#######################################################################################################
+# TSIG KEYS variables
+#--------------------
+# dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom internal
+# dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom external
+# copy the key generated in .private file 
+internal_key: "quKvEXMSdIAttoDcCfom37zVSc1EDXNsm21k5lf0E3EdQ4T0mP34u+QoPzdmg7Bxiujn9aiLeSfJSFgNEc2Bww==" 
+external_key: "1MCLUTVXwIIeGNT2pLZBAEjK/aRBju5YQQ543R1EjycQJGjUDCvmhAKXj+Bea/IXQUajUhHft4qEPUdpQuO/Ug=="   
+###################################################
+# named.conf and zone.conf variables
+#----------------------------------- 
+dns_path: /var/named
+master: 192.168.11.5     # edit with your master server IP
+slaves:                  # list your slaves servers IPs
+  -  192.168.11.15
+  -  192.168.11.20
+listen_ipv4: any
+listen_ipv6: any
+dns_acl_internal:   # list your trusted networks
+  - 127.0.0.0/16
+  - 192.168.11.0/24    
+dns_acl_external:
+ # - "!internal"
+  - any
+#################################################
+#  example zone file variables
+#--------------------------------
+zone_example: "test.example.com"
+zone_serial: "2019070511" #YYYYMMDDTT
+zone_file: 
+  int: 
+   a: 10.10.10.10
+   ns: 
+    - "ns0    A   10.20.10.10"
+    - "ns1    A   10.20.10.11"
+    - "ns2    A   10.20.10.12"
+  ext: 
+   a: 196.90.90.90
+   ns: 
+    - "ns0    A   196.10.90.90"
+    - "ns1    A   196.10.90.91"
+    - "ns2    A   196.10.90.92"
+# arpa file
+int_arpa: "10.10"             # 10.10.10.10    reversed 
+ext_arpa: "90.196"            # 196.90.90.90  reversed
+int_arpa_last: 10           # last octed of int-arpa 
+ext_arpa_last: 90           # last octed of ext-arpa
+##################################################
+# resolv.conf variables
+#----------------------
+forwarders: 
+  - 127.0.0.1
+  - 8.8.8.8
+  - 9.9.9.9

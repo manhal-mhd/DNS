@@ -1,0 +1,40 @@
+// ######################### VIEW FROM INTERNAL NETWORKS ################################ 
+
+view "internal" in { match-clients {key internal-key; !slave; !master; internal;};
+
+        recursion yes;
+        allow-transfer {key internal-key;};
+        additional-from-auth yes;
+        additional-from-cache yes;
+
+        server {{ master }} {keys {internal-key;};};
+        allow-notify { {{ master }}; };
+
+zone "." IN { type hint;file "named.ca"; };
+zone "{{ zone_example }}" IN { type slave;file "int.{{ zone_example }}.zone";masters { {{ master }} ;}; };
+zone "{{ int_arpa }}.in-addr.arpa" IN { type slave;file "{{ int_arpa }}.in-addr.arpa.zone";masters { {{ master }}; }; };
+
+// add your new zones here ; just copy -> paste -> edit the ubove line ^_* 
+
+};
+
+// ######################### VIEW FROM EXTERNAL NETWORKS ################################ 
+
+view "external" in { match-clients {key external-key; !slave; !master; external;};
+
+        recursion no;
+        allow-transfer {key external-key;};
+        server {{ master }} {keys {external-key;} ;};
+        allow-notify { {{ master }}; };
+        additional-from-auth yes;
+        additional-from-cache yes;
+
+zone "." IN { type hint;file "named.ca"; };
+zone "{{ zone_example }}" IN { type slave;file "ext.{{ zone_example }}.zone";masters { {{ master }} ;}; };
+zone "{{ ext_arpa }}.in-addr.arpa" IN { type slave;file "{{ ext_arpa }}.in-addr.arpa.zone";masters { {{ master }}; }; };
+
+// add your new zones here ; just copy -> paste -> edit the ubove line ^_* 
+
+
+};
+

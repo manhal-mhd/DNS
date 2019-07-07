@@ -1,0 +1,4 @@
+---
+ansible_host: 192.168.11.20 #DNS ns2
+ansible_ssh_user: root
+ansible_ssh_pass: toortoor

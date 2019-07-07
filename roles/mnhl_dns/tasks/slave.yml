@@ -1,0 +1,29 @@
+---
+- name: CONFIGURE SLAVE named.conf 
+  template: 
+    src: slave-named.conf.j2
+    dest: /etc/named.conf
+    owner: root
+    group: named
+  notify: restart named service
+
+- name: CONFIGURE SLAVE  zones.conf 
+  template: 
+    src: slave-zones.conf.j2
+    dest: /etc/zones.conf
+    owner: root
+    group: named
+
+- name: CONFIGURE SLAVE INTERNAL key 
+  template: 
+    src: slave-int.key.j2
+    dest: /etc/internal.key
+    owner: root
+    group: named
+
+- name: CONFIGURE SLAVE EXTERNAL key 
+  template: 
+    src: slave-ext.key.j2
+    dest: /etc/external.key
+    owner: root
+    group: named  

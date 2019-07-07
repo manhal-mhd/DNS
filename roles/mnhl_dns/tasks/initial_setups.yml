@@ -1,0 +1,52 @@
+---
+- name: Set Servers hostname
+  hostname: name={{ inventory_hostname }}
+
+- name: Set timezone to Africa/Khartoum
+  timezone:
+   name: Africa/Khartoum
+  tags: time
+
+- name: Update sysconfig
+  lineinfile: dest=/etc/sysconfig/network line="HOSTNAME={{ inventory_hostname }}" regexp="HOSTNAME="
+
+- name: INSTALL PKGs IN ALL RedHat SERVERS 
+  yum: 
+   name:
+    - bind
+    - bind-utils
+    - vim
+   state: latest 
+  when: ansible_os_family == "RedHat"
+
+- name: INSTALL PKGs IN ALL Debian SERVERS 
+  apt: 
+   name:
+    - bind
+    - bind-utils
+    - vim
+   state: latest 
+  when: ansible_os_family == "Debian"
+
+- name: OPEN DNS PORTS in FIREWALL
+  firewalld:
+     permanent: yes
+     immediate: yes
+     port: "{{ item }}"
+     state: enabled
+  with_items:
+     - 53/tcp
+     - 53/udp
+
+- name: enable DNS service on boot 
+  service: 
+      name: named
+      state: started
+      enabled: true
+  ignore_errors: true 
+
+- name: CONFIGURE FORWARDERS 
+  template: 
+      src: resolv.j2
+      dest: /etc/resolv.conf
+  tags: resolv

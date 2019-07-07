@@ -1,0 +1,6 @@
+---
+- name: configuer DNS master 
+  hosts: all
+  gather_facts: false
+  roles: 
+     - mnhl_dns

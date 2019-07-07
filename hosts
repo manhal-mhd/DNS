@@ -1,0 +1,7 @@
+[master]
+ns0.example.lab
+[slaves]
+ns1.example.lab
+ns2.example.lab
+
+#slave.lab.example.com

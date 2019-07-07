@@ -1,0 +1,13 @@
+$ORIGIN .
+$TTL 86400      ; 1 day
+{{ int_arpa }}.in-addr.arpa      IN SOA  ns0.{{ zone_example }}. root.{{ zone_example }}. (
+                                {{ zone_serial }} ; serial
+                                10800      ; refresh (3 hours)
+                                900        ; retry (15 minutes)
+                                604800     ; expire (1 week)
+                                86400      ; minimum (1 day)
+                                )
+                        NS      ns0.{{ zone_example }}.
+$ORIGIN {{ int_arpa_last }}.{{ int_arpa }}.in-addr.arpa.
+{{ int_arpa_last }}                      PTR     mail.{{ zone_example }}.
+                        PTR     webmail.{{ zone_example }}.
