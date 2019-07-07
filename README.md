@@ -12,15 +12,15 @@ this role uses TSIG keys for zone transfer between master and slave/s
 Role Variables
 --------------
 
-* [internal_key:]   key for internal network zone transfer 
-* [ external_key:] key for external network zone transfer
-* [ master:] ip address of master DNS server
-* [slaves:] list of IPs of slaves servers 
-* [listen_ipv4:] network interfaces ipv4 that DNS is allowed to listen on 
-* [listen_ipv6:] network interfaces ipv6 that DNS is allowed to listen on 
-* [dns_acl_internal:] ACL for trusted network 
-* [dns_acl_external:] ACL for untrusted network
-* [forwarders:] list of name resolvers IP addressess 
+* internal_key:   key for internal network zone transfer 
+*  external_key: key for external network zone transfer
+*  master: ip address of master DNS server
+* slaves: list of IPs of slaves servers 
+* listen_ipv4: network interfaces ipv4 that DNS is allowed to listen on 
+* listen_ipv6: network interfaces ipv6 that DNS is allowed to listen on 
+* dns_acl_internal: ACL for trusted network 
+* dns_acl_external: ACL for untrusted network
+* forwarders: list of name resolvers IP addressess 
   
 
 Dependencies
