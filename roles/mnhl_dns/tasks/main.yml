@@ -1,0 +1,18 @@
+---
+- include: initial_setups.yml
+  tags: setups
+
+- include: master.yml
+  when: inventory_hostname in groups['master']
+  tags: master
+  
+- include: slave.yml
+  when: inventory_hostname in groups['slaves']
+  tags: slaves
+
+- name: rndc reload in all servers 
+  command: "rndc reload"
+  tags:
+    - rndc 
+    - slaves
+    - master

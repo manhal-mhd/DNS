@@ -1,0 +1,37 @@
+---
+# # defaults file for mnhl_dns
+# rndc_key: sHGQn5iIVpnjBf4BKlKvaw==       # dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom rndc-key
+# # internal_key: "Ok1qR5IW1ajVka5cHPEJQIXfLyx5V3PSkFBROAzOn21JumDq6nIpoj6H8rfj5Uo+Ok55ZWQ0Wgrf302fDscHLw=="   # dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom internal
+# # external_key: "Ok1qR5IW1ajVka5cHPEJQIXfLyx5V3PSkFBROAzOn21JumDq6nIpoj6H8rfj5Uo+Ok55ZWQ0Wgrf302fDscHLw=="   # dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom external
+# internal_key: "quKvEXMSdIAttoDcCfom37zVSc1EDXNsm21k5lf0E3EdQ4T0mP34u+QoPzdmg7Bxiujn9aiLeSfJSFgNEc2Bww=="   # dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom internal
+# external_key: "1MCLUTVXwIIeGNT2pLZBAEjK/aRBju5YQQ543R1EjycQJGjUDCvmhAKXj+Bea/IXQUajUhHft4qEPUdpQuO/Ug=="   # dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom external
+
+# dns_path: /var/named
+# master: 192.168.11.5
+# slaves: 
+#   -  192.168.11.15
+#   -  192.168.11.20
+# listen_ipv4: any
+# listen_ipv6: any
+# dns_acl_internal: 
+#  # - 127.0.0.0/16
+#   - 192.168.11.0/24
+# dns_acl_external:
+#  # - "!internal"
+#   - any
+#   #- 192.168.11.0/24
+
+# zone_files: 
+#   src: 
+#    - zone: zone.txt
+#    - root: named.root
+#   dest: 
+#     - zone: /var/named/int.test.gov.sd.zone
+#     - root: /var/named/named.root
+# forwarders: 
+#   # - "{{ ansible_all_ipv4_addresses }}"
+#   # - "{{ network.ipv4.address }}"
+#   # - {{ ansible_eth0['ipv4']['address']
+#   - 127.0.01
+#   - 8.8.8.8
+#   - 9.9.9.9

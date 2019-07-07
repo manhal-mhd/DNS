@@ -1,0 +1,6 @@
+---
+# handlers file for mnhl_dns
+- name:  restart named service 
+  service: 
+    name: named
+    state: restarted

@@ -1,0 +1,4 @@
+---
+ansible_host: 192.168.56.108 #DNS MASTER
+ansible_ssh_user: root
+ansible_ssh_pass: toortoor

@@ -1,0 +1,26 @@
+$ORIGIN .
+$TTL 86400	; 1 day
+{{ zone_example }}		IN SOA	ns0.{{ zone_example }}. root.{{ zone_example }}. (
+				{{ zone_serial }} ; serial
+				10800      ; refresh (3 hours)
+				900        ; retry (15 minutes)
+				604800     ; expire (1 week)
+				86400      ; minimum (1 day)
+				)
+			NS	ns0.{{ zone_example }}.
+			NS	ns1.{{ zone_example }}.
+			NS	ns2.{{ zone_example }}.
+			A	{{ zone_file.int.a }}
+			MX 	 10 	 mail.{{ zone_example }}.
+			TXT	"v=spf1   mx  -all"
+$ORIGIN {{ zone_example }}.
+
+{% for record in zone_file.int.ns %}
+{{ record }}
+{% endfor %}
+
+mail	 	 	  A 	  {{ zone_file.int.a }}
+
+			MX	10 mail
+webmail			CNAME	mail
+www			A	{{ zone_file.int.a }}

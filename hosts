@@ -1,0 +1,7 @@
+[master]
+ns0.manhal.mn
+[slaves]
+ns1.manhal.mn
+ns2.manhal.mn
+
+#slave.lab.example.com

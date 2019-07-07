@@ -1,0 +1,56 @@
+--- 
+# master server 
+- name: internal zone example configuration file
+  template: 
+   src: int-zone.j2
+   dest: /var/named/int.{{ zone_example }}.zone
+  tags: zones
+ 
+- name: external zone example configuration file
+  template: 
+   src: ext-zone.j2
+   dest: /var/named/ext.{{ zone_example }}.zone
+  tags: zones
+
+- name: internal arpa example configuration file
+  template: 
+   src: int-arpa.j2
+   dest: /var/named/{{ int_arpa }}.in-addr.arpa.zone
+  tags: zones
+
+- name: external arpa example configuration file
+  template: 
+   src: ext-arpa.j2
+   dest: /var/named/{{ ext_arpa }}.in-addr.arpa.zone
+  tags: zones
+
+- name: CONFIGURE MASTER INTERNAL key 
+  template: 
+    src: master-int.key.j2
+    dest: /etc/internal.key
+    owner: root
+    group: named
+
+- name: CONFIGURE MASTER EXTERNAL key 
+  template: 
+    src: master-ext.key.j2
+    dest: /etc/external.key
+    owner: root
+    group: named
+
+- name: CONFIGURE MASTER named.conf 
+  template: 
+   src: master-named.conf.j2
+   dest: /etc/named.conf
+   owner: root
+   group: named
+  notify: restart named service
+
+- name: CONFIGURE MASTER zones.conf 
+  template: 
+    src: master-zones.conf.j2
+    dest: /etc/zones.conf
+    owner: root
+    group: named
+  notify: restart named service
+
