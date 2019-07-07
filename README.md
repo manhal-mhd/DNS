@@ -27,8 +27,9 @@ Dependencies
 ------------
 
 to generate TSIG keys : 
-dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom internal
-dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom external 
+
+* dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom internal
+* dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom external 
 
 ; please use the key in .private generated file  
 
