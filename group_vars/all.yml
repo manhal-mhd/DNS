@@ -15,15 +15,26 @@ external_key: "1MCLUTVXwIIeGNT2pLZBAEjK/aRBju5YQQ543R1EjycQJGjUDCvmhAKXj+Bea/IXQ
 # named.conf and zone.conf variables
 #----------------------------------- 
 dns_path: /var/named
+<<<<<<< HEAD
 master: 192.168.56.106     # edit with your master server IP
 slaves:                  # list your slaves servers IPs
   -  192.168.56.107
   -  192.168.56.108
+=======
+master: 192.168.11.5     # edit with your master server IP
+slaves:                  # list your slaves servers IPs
+  -  192.168.11.15
+  -  192.168.11.20
+>>>>>>> acbce1f067e68a3f0ce510809f665c9d3188a583
 listen_ipv4: any
 listen_ipv6: any
 dns_acl_internal:   # list your trusted networks
   - 127.0.0.0/16
+<<<<<<< HEAD
   - 192.168.56.0/24    
+=======
+  - 192.168.11.0/24    
+>>>>>>> acbce1f067e68a3f0ce510809f665c9d3188a583
 dns_acl_external:
  # - "!internal"
   - any
@@ -31,7 +42,11 @@ dns_acl_external:
 #  example zone file variables
 #--------------------------------
 zone_example: "test.example.com"
+<<<<<<< HEAD
 zone_serial: "2019070700" #YYYYMMDDTT
+=======
+zone_serial: "2019070511" #YYYYMMDDTT
+>>>>>>> acbce1f067e68a3f0ce510809f665c9d3188a583
 zone_file: 
   int: 
    a: 10.10.10.10

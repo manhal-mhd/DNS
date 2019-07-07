@@ -1,7 +1,14 @@
 [master]
+<<<<<<< HEAD
 ns0.manhal.mn
 [slaves]
 ns1.manhal.mn
 ns2.manhal.mn
+=======
+ns0.example.lab
+[slaves]
+ns1.example.lab
+ns2.example.lab
+>>>>>>> acbce1f067e68a3f0ce510809f665c9d3188a583
 
 #slave.lab.example.com

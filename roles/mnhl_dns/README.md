@@ -35,7 +35,10 @@ dnssec-keygen -a HMAC-SHA512 -b 512 -n HOST -r /dev/urandom external
 Example Playbook
 ----------------
 
+<<<<<<< HEAD
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+=======
+>>>>>>> acbce1f067e68a3f0ce510809f665c9d3188a583
 ---
 - name: configuer DNSs 
   hosts: all
@@ -52,4 +55,8 @@ Author Information
 ------------------
 Name: Manhal Mohammed Mokhtar 
 Email: manhal.mhd@gmail.com
+<<<<<<< HEAD
  
+=======
+ 
+>>>>>>> acbce1f067e68a3f0ce510809f665c9d3188a583

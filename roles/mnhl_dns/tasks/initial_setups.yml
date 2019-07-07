@@ -2,10 +2,17 @@
 - name: Set Servers hostname
   hostname: name={{ inventory_hostname }}
 
+<<<<<<< HEAD
 # - name: Set timezone to Africa/Khartoum
 #   timezone:
 #    name: Africa/Khartoum
 #   tags: time
+=======
+- name: Set timezone to Africa/Khartoum
+  timezone:
+   name: Africa/Khartoum
+  tags: time
+>>>>>>> acbce1f067e68a3f0ce510809f665c9d3188a583
 
 - name: Update sysconfig
   lineinfile: dest=/etc/sysconfig/network line="HOSTNAME={{ inventory_hostname }}" regexp="HOSTNAME="
@@ -17,6 +24,7 @@
     - bind-utils
     - vim
    state: latest 
+<<<<<<< HEAD
 #   when: ansible_os_family == "RedHat"
 
 # - name: INSTALL PKGs IN ALL Debian SERVERS 
@@ -27,6 +35,18 @@
 #     - vim
 #    state: latest 
 #   when: ansible_os_family == "Debian"
+=======
+  when: ansible_os_family == "RedHat"
+
+- name: INSTALL PKGs IN ALL Debian SERVERS 
+  apt: 
+   name:
+    - bind
+    - bind-utils
+    - vim
+   state: latest 
+  when: ansible_os_family == "Debian"
+>>>>>>> acbce1f067e68a3f0ce510809f665c9d3188a583
 
 - name: OPEN DNS PORTS in FIREWALL
   firewalld:

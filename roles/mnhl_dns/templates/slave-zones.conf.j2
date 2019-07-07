@@ -11,8 +11,13 @@ view "internal" in { match-clients {key internal-key; !slave; !master; internal;
         allow-notify { {{ master }}; };
 
 zone "." IN { type hint;file "named.ca"; };
+<<<<<<< HEAD
 zone "{{ zone_example }}" IN { type slave;file "slaves/int.{{ zone_example }}.zone";masters { {{ master }} ;}; };
 zone "{{ int_arpa }}.in-addr.arpa" IN { type slave;file "slaves/{{ int_arpa }}.in-addr.arpa.zone";masters { {{ master }}; }; };
+=======
+zone "{{ zone_example }}" IN { type slave;file "int.{{ zone_example }}.zone";masters { {{ master }} ;}; };
+zone "{{ int_arpa }}.in-addr.arpa" IN { type slave;file "{{ int_arpa }}.in-addr.arpa.zone";masters { {{ master }}; }; };
+>>>>>>> acbce1f067e68a3f0ce510809f665c9d3188a583
 
 // add your new zones here ; just copy -> paste -> edit the ubove line ^_* 
 
@@ -30,8 +35,13 @@ view "external" in { match-clients {key external-key; !slave; !master; external;
         additional-from-cache yes;
 
 zone "." IN { type hint;file "named.ca"; };
+<<<<<<< HEAD
 zone "{{ zone_example }}" IN { type slave;file "slaves/ext.{{ zone_example }}.zone";masters { {{ master }} ;}; };
 zone "{{ ext_arpa }}.in-addr.arpa" IN { type slave;file "slaves/{{ ext_arpa }}.in-addr.arpa.zone";masters { {{ master }}; }; };
+=======
+zone "{{ zone_example }}" IN { type slave;file "ext.{{ zone_example }}.zone";masters { {{ master }} ;}; };
+zone "{{ ext_arpa }}.in-addr.arpa" IN { type slave;file "{{ ext_arpa }}.in-addr.arpa.zone";masters { {{ master }}; }; };
+>>>>>>> acbce1f067e68a3f0ce510809f665c9d3188a583
 
 // add your new zones here ; just copy -> paste -> edit the ubove line ^_* 
 
