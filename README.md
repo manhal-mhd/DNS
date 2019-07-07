@@ -35,13 +35,14 @@ to generate TSIG keys :
 
 Example Playbook
 ----------------
-
+```
 ---
 - name: configuer DNSs 
   hosts: all
   gather_facts: false
   roles: 
      - mnhl_dns
+```
 
 License
 -------
